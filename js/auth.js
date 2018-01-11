@@ -15,6 +15,8 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app.use(express.static('.'));
+
 var FACEBOOK_APP_ID ='167810517285971',
     FACEBOOK_APP_SECRET = 'ccf600cf06aa653f06cccf3a8fc61a17';
 
@@ -34,7 +36,7 @@ passport.use(new FacebookStraategy(fbOpts, fbCallback));
  //console.log(fbOpts, fbCallback);
 
 app.get("/", function(req, res) {
-   res.sendFile(__dirname + "/../index.html");
+   res.sendFile(__dirname + "/index.html");
 });
 
 app.get('/auth/facebook/', passport.authenticate('facebook'));
