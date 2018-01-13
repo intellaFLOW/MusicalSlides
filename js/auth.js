@@ -43,7 +43,24 @@ app.get('/auth/facebook/', passport.authenticate('facebook'));
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', function(req, res){
     console.log('YES');
+    
     // Database save
+    var mysql = require("mysql");
+
+
+// create the connection information for the sql database
+var connection = mysql.createConnection({
+  host: "localhost",
+  port: 3000,
+
+  // Your username
+  user: "root",
+
+  // Your password
+  password: "",
+  database: "musical_slides"
+});
+
 }));
 
 app.listen(3000);
